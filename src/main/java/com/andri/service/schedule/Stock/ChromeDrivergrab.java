@@ -47,6 +47,7 @@ public class ChromeDrivergrab {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
 		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--remote-debugging-port=9222");
 		options.addArguments(
 				"user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36");
 		driver = new ChromeDriver(options);
