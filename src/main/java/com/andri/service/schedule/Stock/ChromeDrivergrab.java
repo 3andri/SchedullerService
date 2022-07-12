@@ -71,8 +71,8 @@ public class ChromeDrivergrab {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(driver.getPageSource());
-		System.out.println(driver.getCurrentUrl());
+		//System.out.println(driver.getPageSource());
+		//System.out.println(driver.getCurrentUrl());
 		WebElement l = driver.findElement(By.tagName("body"));
 
 		return l.getText();
