@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "stockdate")
 public class StockDate {
 	@Id
 	@Column

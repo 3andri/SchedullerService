@@ -13,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@Entity(name = "stock")
 @IdClass(StockId.class)
 public class Stock {
 	@Column
