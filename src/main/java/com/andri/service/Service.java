@@ -26,7 +26,7 @@ public class Service {
 	private ObjectMapper objectMapper;
 
 	@Autowired
-	private ServiceApplication ServiceApplication;
+	private Run_ServiceApplication ServiceApplication;
 	private static final String SCHEDULED_TASKS = "scheduledTasks";
 
 	@RequestMapping(path = "/data")

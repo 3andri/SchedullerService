@@ -12,5 +12,8 @@ public interface StockDateRepo extends JpaRepository<StockDate, Integer> {
 	
 	@Query(value = "SELECT * FROM StockData.stockdate order by `date` DESC limit 1",nativeQuery = true)
 	public StockDate QueryGetLastDate();
+	
+	@Query(value = "SELECT * FROM stockdate WHERE status_get_data =2 order by `date` asc limit 1",nativeQuery = true)
+	public StockDate QueryGetFirstError();
 
 }

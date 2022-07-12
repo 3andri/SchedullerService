@@ -54,10 +54,13 @@ public class Schedule_Run {
 
 	SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyMMdd");
 
-	public void GetStockDataNormal() {
+	int schedullerStatus;
+
+	public void GetStockDataNormal(int schedullerStatus) {
+		this.schedullerStatus = schedullerStatus;
 		int loop = 0;
-		while (loop++ < 100) {
-			int Day = getDay();
+		while (loop++ < 2) {
+			int Day = this.schedullerStatus == Constanta.SCHEDULLER_NORMAL ? getDayNormal() : getDayError();
 			StockDate dateData = new StockDate();
 			if (getToday() >= Day) {
 				dateData.setDate(Day);
@@ -92,7 +95,7 @@ public class Schedule_Run {
 
 	}
 
-	private int getDay() {
+	private int getDayNormal() {
 		StockDate date = stockdate.QueryGetLastDate();
 		if (date == null) {
 			return Constanta.START_DATE;
@@ -101,6 +104,15 @@ public class Schedule_Run {
 				.plusDays(1);
 		Date dateNow = Date.from(now.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		return Integer.parseInt(originalFormat.format(dateNow));
+	}
+
+	private int getDayError() {
+		StockDate date = stockdate.QueryGetFirstError();
+		if (date==null) {
+			return Constanta.END_DATE;
+		}else {
+			return date.getDate();
+		}
 	}
 
 	public int GetDataFromInternet(int day) {
