@@ -59,7 +59,7 @@ public class Schedule_Run {
 	public void GetStockDataNormal(int schedullerStatus) {
 		this.schedullerStatus = schedullerStatus;
 		int loop = 0;
-		while (loop++ < 2) {
+		while (loop++ < 100) {
 			int Day = this.schedullerStatus == Constanta.SCHEDULLER_NORMAL ? getDayNormal() : getDayError();
 			StockDate dateData = new StockDate();
 			if (getToday() >= Day) {
