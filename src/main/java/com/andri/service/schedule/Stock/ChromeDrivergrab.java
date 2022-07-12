@@ -83,8 +83,14 @@ public class ChromeDrivergrab {
 	}
 
 	public void close() {
-		driver.close();
-		driver = null;
-		single_instance = null;
+		try {
+			driver.close();
+			driver.quit();
+			driver = null;
+			single_instance = null;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
