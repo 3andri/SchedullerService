@@ -20,7 +20,7 @@ public class StockServiceShceduller {
 	}
 	
 	
-	//@Scheduled(fixedRate = 60 * 60 * 1000)
+	@Scheduled(fixedRate =24 *60 * 60 * 1000)
 	void scheduleError() {
 		System.out.println("Start Error Scheduller +" + i++);
 		data.GetStockDataNormal(Constanta.SCHEDULLER_ERROR);

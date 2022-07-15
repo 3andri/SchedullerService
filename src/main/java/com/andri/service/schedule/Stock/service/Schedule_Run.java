@@ -62,7 +62,7 @@ public class Schedule_Run {
 		while (loop++ < 100) {
 			int Day = this.schedullerStatus == Constanta.SCHEDULLER_NORMAL ? getDayNormal() : getDayError();
 			StockDate dateData = new StockDate();
-			if (getToday() >= Day) {
+			if (getToday() > Day) {
 				dateData.setDate(Day);
 				dateData.setStatus_get_data(Constanta.status_get_data_NULL);
 				dateData.setHari_libur(Constanta.hari_libur_HOLYDAY);
@@ -89,6 +89,7 @@ public class Schedule_Run {
 				System.out.println(getDayofweek(Day));
 
 			} else {
+				loop=99999999;
 				return;
 			}
 		}
