@@ -13,7 +13,7 @@ import com.andri.service.schedule.Stock.model.StockDate;
 
 @Repository
 public interface StockRepo extends JpaRepository<Stock, String> {
-	@Query(value = "SELECT * from stockdata.stock where StockCode =:stockcode and date not in (SELECT date from stockdifferent s2 )order by `date` ASC ", nativeQuery = true)
+	@Query(value = "SELECT * from stockdata.stock where StockCode =:stockcode and date not in (SELECT date from stockdifferent where StockCode =:stockcode )order by `date` ASC ", nativeQuery = true)
 	public List<Stock> getNonCalculateData(@Param("stockcode") String stockcode);
 
 	@Query(value = "SELECT * from stockdata.stock where StockCode =:stockcode and date < :date order by `Date` DESC limit 1", nativeQuery = true)
