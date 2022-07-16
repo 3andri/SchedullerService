@@ -44,7 +44,7 @@ public class Scheduller_different {
 				stockdifferent.setPercentage(percent.doubleValue());
 				stockdifferent.setStatus(stock.getChange() < 0 ? "-" : "+");
 				//System.out.println(stockdifferent.toString());
-				//stockdifferents.add(stockdifferent);
+				stockdifferentRepo.save(stockdifferent);
 			});
 			//stockdifferentRepo.saveAll(stockdifferents);
 			log.info("stop data "+string);
