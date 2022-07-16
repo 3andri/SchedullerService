@@ -101,9 +101,9 @@ public class Schedule_Run {
 		if (date == null) {
 			return Constanta.START_DATE;
 		}
-		LocalDate now = LocalDate.from(getdate(date.getDate()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
+		LocalDate now = LocalDate.from(getdate(date.getDate()).toInstant().atZone(ZoneId.of("Asia/Tokyo")).toLocalDate())
 				.plusDays(1);
-		Date dateNow = Date.from(now.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dateNow = Date.from(now.atStartOfDay(ZoneId.of("Asia/Tokyo")).toInstant());
 		return Integer.parseInt(originalFormat.format(dateNow));
 	}
 
