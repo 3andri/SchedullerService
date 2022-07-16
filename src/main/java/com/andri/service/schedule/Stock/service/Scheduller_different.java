@@ -43,7 +43,7 @@ public class Scheduller_different {
 						.setScale(2, RoundingMode.HALF_UP);
 				stockdifferent.setPercentage(percent.doubleValue());
 				stockdifferent.setStatus(stock.getChange() < 0 ? "-" : "+");
-				System.out.println(stockdifferent.toString());
+				//System.out.println(stockdifferent.toString());
 				//stockdifferents.add(stockdifferent);
 			});
 			//stockdifferentRepo.saveAll(stockdifferents);
