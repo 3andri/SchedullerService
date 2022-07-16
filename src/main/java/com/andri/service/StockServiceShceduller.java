@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.andri.service.lelang.Service.SchedullerRun;
 import com.andri.service.schedule.Stock.Constanta;
 import com.andri.service.schedule.Stock.service.Schedule_Run;
 import com.andri.service.schedule.Stock.service.Scheduller_different;
