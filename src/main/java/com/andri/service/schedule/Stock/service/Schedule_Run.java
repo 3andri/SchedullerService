@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
@@ -40,8 +42,10 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.ReadContext;
 import com.jayway.jsonpath.spi.json.GsonJsonProvider;
 
+
 @Service
 public class Schedule_Run {
+	Logger log = LoggerFactory.getLogger(Schedule_Run.class);
 
 	@Autowired
 	RestTemplate restTemplate;
@@ -62,6 +66,7 @@ public class Schedule_Run {
 		while (loop++ < 100) {
 			int Day = this.schedullerStatus == Constanta.SCHEDULLER_NORMAL ? getDayNormal() : getDayError();
 			StockDate dateData = new StockDate();
+			log.info(""+Day);
 			if (getToday() > Day) {
 				dateData.setDate(Day);
 				dateData.setStatus_get_data(Constanta.status_get_data_NULL);
@@ -103,7 +108,7 @@ public class Schedule_Run {
 		}
 		LocalDate now = LocalDate.from(getdate(date.getDate()).toInstant().atZone(ZoneId.of("Asia/Tokyo")).toLocalDate())
 				.plusDays(1);
-		Date dateNow = Date.from(now.atStartOfDay(ZoneId.of("Asia/Tokyo")).toInstant());
+		Date dateNow = Date.from(now.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		return Integer.parseInt(originalFormat.format(dateNow));
 	}
 
