@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.andri.service.schedule.Stock.model.Stock;
 import com.andri.service.schedule.Stock.model.StockDate;
+import com.andri.service.schedule.Stock.model.StockList;
 
 @Repository
 public interface StockRepo extends JpaRepository<Stock, String> {
@@ -18,4 +19,6 @@ public interface StockRepo extends JpaRepository<Stock, String> {
 
 	@Query(value = "SELECT * from stockdata.stock where StockCode =:stockcode and date < :date order by `Date` DESC limit 1", nativeQuery = true)
 	public List<Stock> getLastStock(@Param("stockcode") String stockcode, @Param("date") Date date);
+	
+	
 }
