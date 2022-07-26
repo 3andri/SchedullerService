@@ -110,8 +110,8 @@
 								java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication
 								</echo>
 								<echo file="${project.build.directory}/run-silent.sh">
-								nohup java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication >/dev/null &
-								echo $! > pid.txt
+								nohup java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication &gt;/dev/null &amp;
+								echo $! &gt; pid.txt
 								</echo>
 								
 							</target>
