@@ -100,26 +100,32 @@
 				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<phase>clean</phase>
+						<phase>package</phase>
 						<goals>
-							<goal>ant</goal>
+							<goal>run</goal>
 						</goals>
 						<configuration>
 							<target>
 								<echo file="${project.build.directory}/run.bat">
-								java -classpath "${project.build.directory}\classes;${project.build.directory}\lib\*" com.andri.service.Run_ServiceApplication
+									java -classpath
+									"${project.build.directory}\classes;${project.build.directory}\lib\*"
+									com.andri.service.Run_ServiceApplication
 								</echo>
 								<echo file="${project.build.directory}/run.sh">
-								java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication
+									java -classpath
+									"${project.build.directory}/classes:${project.build.directory}/lib/*"
+									com.andri.service.Run_ServiceApplication
 								</echo>
 								<echo file="${project.build.directory}/run-silent.sh">
-								nohup java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication &gt;/dev/null &amp;
-								echo $! &gt; pid.txt
+									nohup java -classpath
+									"${project.build.directory}/classes:${project.build.directory}/lib/*"
+									com.andri.service.Run_ServiceApplication &gt;/dev/null &amp;
+									echo $! &gt; pid.txt
 								</echo>
 								<echo file="${project.build.directory}/kill-silent.sh">
-								kill -9 `cat pid.txt`
+									kill -9 `cat pid.txt`
 								</echo>
-								
+
 							</target>
 						</configuration>
 						<goals>
