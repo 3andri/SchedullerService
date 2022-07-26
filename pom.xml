@@ -109,6 +109,7 @@
 								<echo file="${project.build.directory}/run.sh">
 								java -classpath "${project.build.directory}/classes;${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication.java
 								</echo>
+								
 							</target>
 						</configuration>
 						<goals>
