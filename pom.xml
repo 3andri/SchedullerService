@@ -107,19 +107,13 @@
 						<configuration>
 							<target>
 								<echo file="${project.build.directory}/run.bat">
-									java -classpath
-									"${project.build.directory}\classes;${project.build.directory}\lib\*"
-									com.andri.service.Run_ServiceApplication
+									java -classpath	"${project.build.directory}\classes;${project.build.directory}\lib\*" com.andri.service.Run_ServiceApplication
 								</echo>
 								<echo file="${project.build.directory}/run.sh">
-									java -classpath
-									"${project.build.directory}/classes:${project.build.directory}/lib/*"
-									com.andri.service.Run_ServiceApplication
+									java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication
 								</echo>
 								<echo file="${project.build.directory}/run-silent.sh">
-									nohup java -classpath
-									"${project.build.directory}/classes:${project.build.directory}/lib/*"
-									com.andri.service.Run_ServiceApplication &gt;/dev/null &amp;
+									nohup java -classpath "${project.build.directory}/classes:${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication &gt;/dev/null &amp;
 									echo $! &gt; pid.txt
 								</echo>
 								<echo file="${project.build.directory}/kill-silent.sh">
