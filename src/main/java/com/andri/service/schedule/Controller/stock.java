@@ -25,5 +25,10 @@ public class stock {
 	public List<StockList> getStockList() {
 		return repo.getStockList();
 	}
+	
+	@RequestMapping("/stock-rank")
+	public List<StockList> getRankList() {
+		return repo.getStockList();
+	}
 
 }

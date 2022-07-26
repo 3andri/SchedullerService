@@ -79,7 +79,45 @@
 	</dependencies>
 
 	<build>
+
 		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>data</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<configuration>
+							<target>
+								<echo file="${project.build.directory}/run.bat">
+								java -classpath "${project.build.directory}\classes;${project.build.directory}\lib\*" com.andri.service.Run_ServiceApplication.java
+								</echo>
+								<echo file="${project.build.directory}/run.sh">
+								java -classpath "${project.build.directory}/classes;${project.build.directory}/lib/*" com.andri.service.Run_ServiceApplication.java
+								</echo>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -92,25 +130,10 @@
 					</image>
 				</configuration>
 			</plugin>
-		<!-- 	<plugin>
-				<groupId>org.springframework.experimental</groupId>
-				<artifactId>spring-aot-maven-plugin</artifactId>
-				<version>${spring-native.version}</version>
-				<executions>
-					<execution>
-						<id>test-generate</id>
-						<goals>
-							<goal>test-generate</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>generate</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.springframework.experimental</groupId> <artifactId>spring-aot-maven-plugin</artifactId> 
+				<version>${spring-native.version}</version> <executions> <execution> <id>test-generate</id> 
+				<goals> <goal>test-generate</goal> </goals> </execution> <execution> <id>generate</id> 
+				<goals> <goal>generate</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.hibernate.orm.tooling</groupId>
 				<artifactId>hibernate-enhance-maven-plugin</artifactId>
