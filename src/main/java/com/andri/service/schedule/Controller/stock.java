@@ -33,7 +33,14 @@ public class stock {
 	@RequestMapping("/stock-rank")
 	public List<stockdifferent> getRankList(@RequestParam(name = "date", required = true) String date,
 			@RequestParam(name = "sort", required = false) String sort) {
-		return repoRank.GetlistRankASC(date);
+		
+		if (sort==null) {
+			return repoRank.GetlistRankASC(date);
+		}else if(sort=="gain") {
+			return repoRank.GetlistRankDESC(date);
+		}else {
+			return repoRank.GetlistRankASC(date);
+		}
 	}
 
 }
